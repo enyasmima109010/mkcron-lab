@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>中彩网官网首页 - 信息型介绍</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: #1e1e2f;
+            background: #f8f9fc;
+        }
+
+        /* 深色头图 */
+        .hero {
+            background: linear-gradient(145deg, #0b1828 0%, #1a2d44 100%);
+            color: #eef3f9;
+            padding: 5rem 2rem 4.5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -20%;
+            width: 160%;
+            height: 200%;
+            background: radial-gradient(circle at 30% 60%, rgba(60, 130, 200, 0.08), transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero h1 {
+            font-size: 2.6rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            max-width: 720px;
+            margin: 1rem auto 0;
+            color: #cbdae9;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero .badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 0.4rem 1rem;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            color: #b4cfec;
+            margin-bottom: 1.8rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* 浅色正文容器 */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .main-content {
+            background: #ffffff;
+            margin: -2rem auto 0;
+            border-radius: 28px 28px 0 0;
+            padding: 3.5rem 2rem 4rem;
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 -6px 20px rgba(0, 0, 0, 0.02);
+        }
+
+        /* 信息卡片网格 */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 2.5rem 0 3rem;
+        }
+
+        .card {
+            background: #f3f6fc;
+            border-radius: 20px;
+            padding: 2rem 1.8rem;
+            transition: all 0.2s ease;
+            border: 1px solid #e9edf4;
+        }
+
+        .card:hover {
+            background: #eef2f9;
+            border-color: #cbd6e6;
+            box-shadow: 0 6px 14px rgba(0, 20, 40, 0.06);
+        }
+
+        .card h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            color: #162b3e;
+            letter-spacing: 0.3px;
+        }
+
+        .card p {
+            color: #2f4055;
+            font-size: 0.98rem;
+        }
+
+        /* 特点场景融合区 */
+        .feature-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2.5rem;
+            margin: 2rem 0 2.8rem;
+            align-items: flex-start;
+        }
+
+        .feature-text {
+            flex: 2;
+            min-width: 260px;
+        }
+
+        .feature-text h2 {
+            font-size: 1.7rem;
+            font-weight: 600;
+            color: #152b3e;
+            margin-bottom: 1rem;
+            border-left: 4px solid #3a7ca5;
+            padding-left: 1rem;
+        }
+
+        .feature-text p {
+            margin-bottom: 1.2rem;
+            color: #2c3f56;
+        }
+
+        .feature-highlight {
+            flex: 1.2;
+            min-width: 220px;
+            background: #eaf0f9;
+            border-radius: 20px;
+            padding: 1.6rem 1.8rem;
+            border: 1px solid #dce5f0;
+        }
+
+        .feature-highlight ul {
+            list-style: none;
+        }
+
+        .feature-highlight li {
+            padding: 0.4rem 0;
+            display: flex;
+            align-items: baseline;
+            gap: 0.6rem;
+            font-size: 0.98rem;
+            color: #1f3850;
+        }
+
+        .feature-highlight li::before {
+            content: '▹';
+            color: #3a7ca5;
+            font-weight: bold;
+        }
+
+        /* 自然链接段落 */
+        .link-paragraph {
+            background: #f0f4fb;
+            border-radius: 20px;
+            padding: 2rem 2.2rem;
+            margin: 2.8rem 0 2rem;
+            border-left: 4px solid #3a7ca5;
+        }
+
+        .link-paragraph p {
+            font-size: 1.05rem;
+            color: #1b3146;
+            max-width: 800px;
+        }
+
+        .link-paragraph a {
+            color: #1a6e9e;
+            font-weight: 600;
+            text-decoration: none;
+            border-bottom: 2px solid rgba(26, 110, 158, 0.25);
+            transition: border-color 0.2s;
+        }
+
+        .link-paragraph a:hover {
+            border-bottom-color: #1a6e9e;
+        }
+
+        /* 小 FAQ 摘要 */
+        .faq-mini {
+            margin: 2.5rem 0 1rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #dee6f0;
+            padding-bottom: 1rem;
+        }
+
+        .faq-item strong {
+            display: block;
+            font-weight: 600;
+            color: #1c3650;
+            margin-bottom: 0.25rem;
+        }
+
+        .faq-item span {
+            font-size: 0.93rem;
+            color: #3f5770;
+        }
+
+        /* 页脚 */
+        .footer {
+            text-align: center;
+            padding: 2.5rem 2rem 3rem;
+            color: #5f7188;
+            font-size: 0.9rem;
+            border-top: 1px solid #e4eaf3;
+            margin-top: 2rem;
+        }
+
+        .footer a {
+            color: #2b6f9c;
+            text-decoration: none;
+            border-bottom: 1px dotted #b0c9df;
+        }
+
+        /* 响应式 */
+        @media (max-width: 640px) {
+            .hero h1 {
+                font-size: 1.9rem;
+            }
+            .hero {
+                padding: 3rem 1.2rem 3.5rem;
+            }
+            .main-content {
+                padding: 2rem 1.2rem 3rem;
+                border-radius: 18px 18px 0 0;
+            }
+            .card-grid {
+                gap: 1.2rem;
+            }
+            .link-paragraph {
+                padding: 1.5rem;
+            }
+            .feature-section {
+                gap: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 深色头图 -->
+    <header class="hero">
+        <div class="badge">站点介绍 · 可信视角</div>
+        <h1>中彩网 · 信息聚合与索引</h1>
+        <p>一个面向彩民与信息需求者的知识型站点，聚焦开奖数据、玩法说明与行业常识，以中立、克制的方式呈现公开信息。</p>
+    </header>
+
+    <!-- 浅色正文区 · 卡片式布局 -->
+    <div class="container">
+        <main class="main-content">
+
+            <!-- 用途卡片 + 适合人群 -->
+            <div class="card-grid">
+                <div class="card">
+                    <h3>📋 玩法速查</h3>
+                    <p>汇总主流彩种的规则、奖项设置与概率说明，帮助用户快速理解游戏结构，不做任何投注建议。</p>
+                </div>
+                <div class="card">
+                    <h3>📊 开奖历史归档</h3>
+                    <p>提供历史开奖号码与趋势图表，数据均来自公开渠道，便于研究号码分布与冷热情况。</p>
+                </div>
+                <div class="card">
+                    <h3>🧑‍💻 信息型用户</h3>
+                    <p>适合希望了解彩票基础知识、规则细节或进行数据回顾的访客，内容偏向知识梳理而非营销。</p>
+                </div>
+                <div class="card">
+                    <h3>📌 行业观察者</h3>
+                    <p>对彩票公益金分配、监管政策与概率理论有兴趣的用户，可在此站点找到相关引用与说明。</p>
+                </div>
+            </div>
+
+            <!-- 融合特点与场景 -->
+            <div class="feature-section">
+                <div class="feature-text">
+                    <h2>从站点介绍与可信说明出发</h2>
+                    <p>
+                        <a href="https://cns-cnlottery.com" style="color:#1a6e9e; font-weight:600; text-decoration:none; border-bottom:2px solid rgba(26,110,158,0.2);">中彩网官网首页</a> 
+                        定位为信息枢纽，其内容结构围绕透明度与可读性展开。每个分类页面均标注数据来源或引用说明，尽量减少信息不对称。 
+                        站点不提供任何形式的购彩入口，也不推送所谓的“必中”策略，而是希望用户基于事实自行判断。
+                    </p>
+                    <p>
+                        例如，在“双色球”频道的概率说明页中，会明确列出组合数学的计算方式；在“3D”玩法页面则会说明直选、组选的中奖逻辑。 
+                        这种知识型风格，更适合那些希望理性了解彩票机制的群体。
+                    </p>
+                </div>
+                <div class="feature-highlight">
+                    <ul>
+                        <li>玩法规则均以官方文档为参照</li>
+                        <li>开奖号码保留历史溯源链接</li>
+                        <li>不嵌入第三方投注跳转</li>
+                        <li>页面更新频率与开奖日程同步</li>
+                        <li>每篇文章末尾均附免责说明</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 自然链接段落 (嵌入关键词) -->
+            <div class="link-paragraph">
+                <p>
+                    如果你正在寻找一个结构清晰、内容克制的彩票信息站点，可以仔细浏览 
+                    <a href="https://cns-cnlottery.com">中彩网官网首页</a>。 
+                    该站点以卡片式导航组织内容，减少干扰信息，方便你直接定位到感兴趣的玩法说明或历史开奖记录。 
+                    所有公开信息均保持定期同步，适合作为查阅基础资料的辅助工具。
+                </p>
+            </div>
+
+            <!-- FAQ 摘要 -->
+            <div class="faq-mini">
+                <div class="faq-item">
+                    <strong>这个站点有购彩功能吗？</strong>
+                    <span>不提供。该站点仅为信息聚合与展示，不接入任何销售或代购系统。</span>
+                </div>
+                <div class="faq-item">
+                    <strong>数据更新是否及时？</strong>
+                    <span>开奖号码通常在官方公布后数小时内同步，节假日顺延。</span>
+                </div>
+                <div class="faq-item">
+                    <strong>适合新手阅读吗？</strong>
+                    <span>适合。多数页面从基础术语开始解释，并配有简图或示例。</span>
+                </div>
+                <div class="faq-item">
+                    <strong>是否包含预测内容？</strong>
+                    <span>不包含。站点明确反对任何形式的号码预测，仅陈列历史数据。</span>
+                </div>
+            </div>
+
+            <!-- 页脚 -->
+            <div class="footer">
+                <p>内容仅供信息参考，不构成任何购买建议。理性看待彩票，量力而行。</p>
+                <p style="margin-top:0.6rem;">
+                    了解更多，请访问 <a href="https://cns-cnlottery.com">中彩网官网首页</a> · 数据来源于公开渠道
+                </p>
+            </div>
+
+        </main>
+    </div>
+</body>
+</html>
